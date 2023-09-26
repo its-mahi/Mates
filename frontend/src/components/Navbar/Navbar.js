@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import NotificationBox from './NotificationBox'
+// import NotificationBox from './NotificationBox'
 import { useState, useEffect } from 'react'
 import './Navbar.css'
 
@@ -20,7 +20,7 @@ export default function Navbar() {
   
   const navigate = useNavigate();
   const [loginStatus, setLoginStatus] = useState(false);
-  const [show, setShow] = useState(false);
+//   const [show, setShow] = useState(false);
 
   const isLoggedin = () => {
     if (localStorage.getItem('username') !== null) {
@@ -114,7 +114,7 @@ export default function Navbar() {
 
               </ul>
 
-            {loginStatus && (localStorage.getItem("Usertype") === 'user') && (<NavLink to='/analysis' className='btn btn-white mr-2'>Hey, {localStorage.getItem("username")} !</NavLink>)}
+            {loginStatus && (localStorage.getItem("Usertype") === 'user') && (<NavLink to='/profile' className='btn btn-white mr-2'>Hey, {localStorage.getItem("username")} !</NavLink>)}
             {/* <button className='btn btn-white mr-2'><i className="fa fa-home"></i></button> */}
 
             {/* <button className='btn btn-white  mr-2' onClick={() => setShow(!show)}><i className="fas fa-bell"></i></button> */}
@@ -145,17 +145,6 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-      {
-        show && (
-          <div className="title1">
-            <NotificationBox
-              description="Here all notifications will be displayed."
-
-              title="For Notifications" className="box"
-            />
-          </div>
-        )
-      }
     </div>
   )
 }

@@ -27,7 +27,7 @@ router.post('/addanswer/:id', fetchuser, async (req, res) => {
         res.json({ "Success": "Added Answer Successfully", "status": true })
     }
     catch (error) {
-        console.log(error.message);
+        console.log(e.message);
         res.status(400).send("Internal Server Error");
     }
 })
@@ -51,31 +51,6 @@ router.post("/fetchanswer/:id", async (req, res) => {
     }
 
     catch (e) {
-        console.log(e.message);
-        res.status(400).send("Internal Server Error");
-    }
-})
-
-router.post("/userAnstoUpdate/:id", async (req, res)=>{
-    try{
-        const answer = await Answer.findOne({_id: req.params.id});
-        res.json(answer);
-    }
-    catch(e)
-    {
-        console.log(e.message);
-        res.status(400).send("Internal Server Error");
-    }
-})
-
-router.post("/updateans/:id", async (req, res)=>{
-    try{
-        const answer = await Answer.findByIdAndUpdate(req.params.id, {$set: {answer: req.body.answer}});
-
-        res.json({status: "updated"});
-    }
-    catch(e)
-    {
         console.log(e.message);
         res.status(400).send("Internal Server Error");
     }
@@ -291,7 +266,7 @@ router.post("/givenAllAnswersTags", async (req, res) => {
         res.json(tags);
     }
     catch (e) {
-        console.log(error.message);
+        
         res.status(400).send("Internal Server Error");
     }
 })
@@ -318,87 +293,13 @@ router.post("/givenAnswersTags/:username", async (req, res) => {
         res.json(tags);
     }
     catch (e) {
-        console.log(error.message);
-        res.status(400).send("Internal Server Error");
-    }
-})
-
-
-router.post('/fetchUserAnsweredQuestions/:username', async (req, res) => {
-    try {
-
-        const answers = await Answer.find({ postedBy: req.params.username });
-        // console.log(answers);
-
-        const questions = [];
-
-        for (i in answers) {
-            const question = await Question.find({ _id: answers[i].questionid });
-            questions.push(question);
-        }
-
-        if (!questions) {
-            return res.status(404).send("Question not Found");
-        }
-
-        res.json(questions);
-    }
-    catch (e) {
-        console.log(e.message);
-        res.status(500).send("Internal Server Error");
-    }
-})
-
-
-router.post('/fetchUserAcceptedAnsweredQuestions/:username', async (req, res) => {
-    try {
-
-        const answers = await Answer.find({ $and: [{ postedBy: req.params.username }, { status: "Accepted" }] });
-        // console.log(answers);
-
-        const questions = [];
-
-        for (i in answers) {
-            const question = await Question.find({ _id: answers[i].questionid });
-            questions.push(question);
-        }
-
-        if (!questions) {
-            return res.status(404).send("Question not Found");
-        }
-
-        res.json(questions);
-    }
-    catch (e) {
-        console.log(e.message);
-        res.status(500).send("Internal Server Error");
-    }
-})
-
-router.post("/findNumberOfAns", async (req, res) => {
-    try {
-        const answers = await Answer.find();
-
-        let obj = {};
-
-        answers.map(answer => {
-
-            if (obj[answer.questionid] == null) {
-                obj[answer.questionid] = 1;
-            }
-            else {
-                obj[answer.questionid] += 1;
-            }
-
-        })
-
-        res.json(obj);
-    }
-    catch (e) {
         console.log(e.message);
         res.status(400).send("Internal Server Error");
     }
 })
+
+
+
 
 router.post("/upvote/:id", async (req, res) => {
     try {
@@ -444,31 +345,6 @@ router.post("/downvote/:id", async (req, res) => {
     }
 })
 
-router.post("/acceptanswer/:id", async (req, res) => {
-    try {
-        const updatedAnswer = await Answer.findByIdAndUpdate(req.params.id, { $set: { "status": "Accepted" } });
-        res.json({ "status": "Accepted" });
-    }
-
-    catch (e) {
-        console.log(e.message);
-        res.status(400).send("Internal Server error");
-    }
-})
-
-router.post("/points", async (req, res) => {
-    try {
-        let username = localStorage.getItem("username");
-
-        let answers = await Answer.find({ $and: [{ "postedBy": username }, { "status": "Accepted" }] });
-
-        res.json({ "points": answers.length * 5 });
-    }
-    catch (e) {
-        console.log(e.message);
-        res.status(400).send("Internal Server Error");
-    }
-})
 
 
 router.post("/deleteans/:id", async(req, res)=>{

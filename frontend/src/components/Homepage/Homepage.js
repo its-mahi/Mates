@@ -1,19 +1,7 @@
-// import Navbar from "../Navbar/Navbar";
-// import Editor from "../Editor/Editor";
 import React from 'react'
-// import Heading from '../heading/heading'
 import './homepage.css'
 import doubt from './doubt.png';
 import { NavLink } from 'react-router-dom';
-// import Card from '../Card/card'
-var margin = {
-    marginTop: "80px",
-}
-var color1 = {
-    backgroundColor: 'white',
-    height: '100vh',
-
-}
 
 
 function Homepage() {

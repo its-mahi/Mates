@@ -28,11 +28,6 @@ router.post('/createuser', [
 
     try {
         // check whether the user with this email already exist
-
-        // if (req.body.password != req.body.confirm_password) {
-        //     return res.status(400).json({ error: "Both Password Must be same" });
-        // }
-
         let user = await User.findOne({ email: req.body.email });
         if (user) {
             return res.status(400).json({ error: "Sorry a user with this email already exist" })
