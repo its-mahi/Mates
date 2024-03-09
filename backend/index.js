@@ -10,7 +10,13 @@ app.get('/', (req, res) => {
 })
 
 app.use(express.json());
+
+// Allow all origins
 app.use(cors());
+// Allow specific origin(s)
+app.use(cors({
+  origin: 'https://stack-overflow-clone-backend-ten.vercel.app'
+}));
 
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/question", require("./routes/questions"));
