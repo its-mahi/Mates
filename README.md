@@ -1,1 +1,1 @@
-# Mates : A Doubt Solving Platform
+# Mates : A Community Platform
