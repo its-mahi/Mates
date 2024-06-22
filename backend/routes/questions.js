@@ -13,8 +13,6 @@ const mongoose = require('mongoose')
 
 // var jwt = require('jsonwebtoken');
 
-// const JWT_SECRET = 'Darshitisagoodboy';
-
 const router = express.Router();
 
 router.post('/addquestion', fetchuser, async (req, res) => {
