@@ -358,4 +358,32 @@ router.post("/deleteans/:id", async(req, res)=>{
     }
 })
 
+
+router.post("/findNumberOfAns", async(req, res)=>{
+    try{
+        const allAnswers = await Answer.find();
+        const obj = {};
+
+        allAnswers.map(ans => {
+            if(obj[ans.questionid])
+            {
+                obj[ans.questionid] = obj[ans.questionid] + 1;
+            }
+            else
+            {
+                obj[ans.questionid] = 1;
+            }
+        })
+        
+        console.log(obj);
+
+        res.json(obj);
+    }
+    catch(e)
+    {
+        console.log(e.message);
+        res.status(400).send("Internal Server Error");
+    }
+})
+
 module.exports = router

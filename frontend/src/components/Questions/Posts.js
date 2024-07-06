@@ -30,6 +30,8 @@ export default function Posts({ posts }) {
 
     const json = await response.json();
 
+    console.log("frequency : ", json);
+
     setnoOfAns(json);
   };
 
@@ -95,11 +97,13 @@ export default function Posts({ posts }) {
                     {parse(question.question)[0]}
                   </small>
                 </div>
+                
                 {/* <div style={{ display: "flex" }}>
-                                                                        <span className="question-tags">react</span>
-                                                                        <span className="question-tags">frontend</span>
-                                                                        <span className="question-tags">development</span>
-                                                                    </div> */}
+                    <span className="question-tags">react</span>
+                    <span className="question-tags">frontend</span>
+                    <span className="question-tags">development</span>
+                </div> */}
+
                 <div className="mt-3">
                   {question.tags.split(" ").map((tag) => (
                     <NavLink
