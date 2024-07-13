@@ -21,7 +21,24 @@ Mates is a community-based platform designed for users to ask and answer questio
 
 ## Glimpse of Mates :)
 
-
+<table>
+  <tr>
+    <td>
+      <img src="screenshots/home.png" alt="Home Page" style="border: 1px solid #000; width:500px; border-radius: 8px; margin: 10px;">
+    </td>
+    <td>
+      <img src="screenshots/que.png" alt="Question Page" style="border: 1px solid #000; width:500px; border-radius: 8px; margin: 10px;">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="screenshots/editor.png" alt="Editor Page" style="border: 1px solid #000; width:500px; border-radius: 8px; margin: 10px;">
+    </td>
+    <td>
+      <img src="screenshots/profile.png" alt="User Profile" style="border: 1px solid #000; width:500px; border-radius: 8px; margin: 10px;">
+    </td>
+  </tr>
+</table>
 
 ## Installation
 
@@ -66,7 +83,7 @@ Mates is a community-based platform designed for users to ask and answer questio
 
 ## Contribution
 
-We welcome contributions to enhance the Mates platform! Please follow these steps:
+Always welcome contributions to enhance the Mates platform! Please follow these steps:
 
 1. Fork the repository
 2. Create a new branch (`git checkout -b feature-branch`)
